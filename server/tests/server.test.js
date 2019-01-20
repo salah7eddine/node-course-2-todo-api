@@ -4,12 +4,14 @@ const {ObjectID} = require('mongodb');
 
 const {app} = require('../server');
 const {Todo} = require('../models/todo');
-const {todos, poulateTodos, users, populateUsers} = require('./seed/seed')
+const { todos, poulateTodos, users, populateUsers} = require('./seed/seed')
 
 
-
-beforeEach(populateUsers);
+// beforeEach(populateUsers);
 beforeEach(poulateTodos);
+
+
+
 
 
 describe('POST /todos', () => {
@@ -62,6 +64,7 @@ describe('GET /todos', () => {
 
 describe('GET /todos/:id', () => {
   it('should return todo doc', (done) => {
+    console.log(todos);
     request(app)
       .get(`/todos/${todos[0]._id.toHexString()}`)
       .expect(200)
@@ -128,7 +131,7 @@ describe('DELETE /todos/:id', () => {
       .expect(404)
       .end(done);
   });
-})
+});
 
 describe('PATCH /todos/:id', () => {
   it('should update the todo', (done) => {
@@ -174,9 +177,10 @@ describe('PATCH /todos/:id', () => {
       .expect((res) => {
         expect(res.body.todo.text).toBe(text);
         expect(res.body.todo.completed).toBe(false);
-        expect(typeof res.body.todo.completedAt).toNotExist();
+        expect(res.body.todo.completedAt).toEqual(null);
       })
       .end(done);
 
   });
+  
 });

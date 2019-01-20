@@ -21,7 +21,7 @@ const users = [{
 const todos = [{
   _id: new ObjectID(),
   text: 'First test todo'
-},{
+}, {
   _id: new ObjectID(),
   text: 'Second test todo',
   completed: true,
@@ -30,7 +30,7 @@ const todos = [{
 
 const populateTodos = (done) => {
   Todo.remove({}).then(() => {
-    return Todo.insertMany(todos);
+    Todo.insertMany(todos);
   }).then(() => done());
 };
 
