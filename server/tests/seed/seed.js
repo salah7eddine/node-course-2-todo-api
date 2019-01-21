@@ -9,13 +9,15 @@ const userTwoId = new ObjectID();
 const users = [{
   _id: userOneId,
   email: 'abousaid7salah@gmail.com',
+  password:'123abc!',
   tokens: [{
     access: 'auth',
     token: jwt.sign({_id: userOneId, access:'auth'}, 'abc123').toString()
   }]
 }, {
   _id: userTwoId,
-  email: 'abousaid8hamza@gmail.com'
+  email: 'abousaid8hamza@gmail.com',
+  password:'123abc!'
 }];
  
 const todos = [{
