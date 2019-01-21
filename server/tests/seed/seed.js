@@ -16,12 +16,12 @@ const users = [{
 }, {
   _id: userTwoId,
   email: 'abousaid8hamza@gmail.com'
-}]
+}];
  
 const todos = [{
   _id: new ObjectID(),
   text: 'First test todo'
-}, {
+},{
   _id: new ObjectID(),
   text: 'Second test todo',
   completed: true,
@@ -30,7 +30,7 @@ const todos = [{
 
 const populateTodos = (done) => {
   Todo.remove({}).then(() => {
-    Todo.insertMany(todos);
+    return Todo.insertMany(todos);
   }).then(() => done());
 };
 
@@ -41,6 +41,6 @@ const populateUsers = (done) => {
 
     return Promise.all([userOne, userTwo])
   }).then(() => done());
-}
+};
 
 module.exports = {todos, populateTodos, users, populateUsers};
