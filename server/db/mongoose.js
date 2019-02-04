@@ -8,8 +8,8 @@ mongoose.Promise = global.Promise;
 // process.env.NODE_ENV === 'development'
 // process.env.NODE_ENV === 'test'
 
-mongoose.connect("mongodb://127.0.0.1:27017/TodoApp", { useNewUrlParser: true });
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/TodoApp", {useNewUrlParser: true });
+//mongoose.connect("mongodb://127.0.0.1:27017/TodoApp", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/TodoApp", {useNewUrlParser: true });
  
 
 module.exports = {
